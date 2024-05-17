@@ -16,10 +16,19 @@ for (let i = 0; i < gridSize; i++) {
     for (let j = 0; j < gridSize; j++) {
         let td = document.createElement("td");
         td.classList.add("hidden");
-        td.addEventListener("click", (event) => {event.preventDefault(); handleClick(i, j)});
+        td.addEventListener("click", (event) => {
+            event.preventDefault();
+            handleClick(i, j);
+        });
         td.addEventListener("contextmenu", (event) => {
             event.preventDefault();
             handleRightClick(i, j);
+        });
+        td.addEventListener("mousedown", (event) => {
+            if (event.button === 2) {
+                event.preventDefault();
+                handleHoldClick(i, j);
+            }
         });
         if (map[i * gridSize + j] === "Y") {
             tr.appendChild(td);
@@ -30,7 +39,7 @@ for (let i = 0; i < gridSize; i++) {
                 adjacentMines: 0,
             });
         } else {
-            td.classList.add('transparent')
+            td.classList.add("transparent");
             tr.appendChild(td);
             row.push({
                 isMine: false,
@@ -86,18 +95,26 @@ function handleClick(i, j) {
 }
 
 // Obsługa kliknięcia prawym przyciskiem myszy
-// Obsługa kliknięcia prawym przyciskiem myszy
 function handleRightClick(i, j) {
     if (gameOver || board[i][j].isRevealed) return;
 
     board[i][j].isFlagged = !board[i][j].isFlagged;
     let cell = gameBoard.rows[i].cells[j];
-    
+
     if (board[i][j].isFlagged) {
-      cell.classList.add('flag')
+        cell.classList.add("flag");
     } else {
-      cell.classList.remove('flag')
+        cell.classList.remove("flag");
     }
+}
+
+// Obsługa przytrzymania przycisku myszy do postawnienia flagi
+function handleHoldClick(i, j) {
+    if (gameOver || board[i][j].isRevealed) return;
+
+    board[i][j].isFlagged = true;
+    let cell = gameBoard.rows[i].cells[j];
+    cell.classList.add("flag");
 }
 
 // Odkrywanie pola
