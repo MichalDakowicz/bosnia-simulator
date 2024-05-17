@@ -1,9 +1,7 @@
-import data from "./map.json" assert { type: "json" };
-
 const gridSize = 40; // Rozmiar planszy
 const numMines = 150; // Ilość min
 
-let map = data;
+console.log(map);
 
 let board = []; // Tablica reprezentująca planszę
 let mines = []; // Pozycje min
