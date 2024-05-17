@@ -16,7 +16,7 @@ for (let i = 0; i < gridSize; i++) {
     for (let j = 0; j < gridSize; j++) {
         let td = document.createElement("td");
         td.classList.add("hidden");
-        td.addEventListener("click", () => handleClick(i, j));
+        td.addEventListener("click", (event) => {event.preventDefault(); handleClick(i, j)});
         td.addEventListener("contextmenu", (event) => {
             event.preventDefault();
             handleRightClick(i, j);
@@ -30,6 +30,7 @@ for (let i = 0; i < gridSize; i++) {
                 adjacentMines: 0,
             });
         } else {
+            td.classList.add('transparent')
             tr.appendChild(td);
             row.push({
                 isMine: false,
@@ -91,9 +92,12 @@ function handleRightClick(i, j) {
 
     board[i][j].isFlagged = !board[i][j].isFlagged;
     let cell = gameBoard.rows[i].cells[j];
-    cell.innerHTML = board[i][j].isFlagged
-        ? '<img src="flaga.png" style="width: 24px;">'
-        : "";
+    
+    if (board[i][j].isFlagged) {
+      cell.classList.add('flag')
+    } else {
+      cell.classList.remove('flag')
+    }
 }
 
 // Odkrywanie pola
@@ -115,6 +119,7 @@ function revealCell(i, j) {
     cell.classList.add("revealed");
 
     if (board[i][j].adjacentMines > 0) {
+        cell.classList.add(`n${board[i][j].adjacentMines}`);
         cell.textContent = board[i][j].adjacentMines;
     } else {
         // Rekursywne odkrywanie pustych pól
