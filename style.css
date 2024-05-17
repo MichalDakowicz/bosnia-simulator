@@ -1,0 +1,28 @@
+table {
+    border-collapse: collapse;
+    background: url("image.png");
+    background-size: cover;
+    background-position: center;
+}
+td {
+    width: 25px !important;
+    height: 25px !important;
+    overflow: hidden;
+    line-height: 13px;
+    border: 1px solid black;
+    text-align: center;
+    font-weight: bold;
+    cursor: pointer;
+}
+button {
+    margin-top: 10px;
+    padding: 5px 10px;
+    font-size: 16px;
+    cursor: pointer;
+}
+.revealed {
+    background-color: #fffa;
+}
+.mine {
+    background-color: red;
+}
