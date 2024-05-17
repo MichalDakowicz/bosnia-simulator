@@ -2,17 +2,23 @@
 <html>
     <head>
         <title>Saper</title>
+        <meta charset="utf-8">
         <link rel="stylesheet" href="style.css" />
     </head>
     <body>
-        <h2>Bośnia Simulator</h2>
+        <div class="container">
+            <div class="info">
+                <div class="info-inner">
+                    <h1>Bosnia simulator</h1>
+                    <p>average day in Bosnia</p>
+                </div>
+            </div>
 
-        <table id="gameBoard"></table>
+            <table id="gameBoard"></table>
+        </div>
 
-        <button onclick="location.reload()">Restart</button>
+        <script src="map.js"></script>
 
-        <p id="array"></p>
-
-        <script type="module" src="script.js"></script>
+        <script src="script.js"></script>
     </body>
 </html>

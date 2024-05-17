@@ -1,3 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+
+body {
+  font-family: Nunito, sans-serif;
+  background-image: url('bg.jpg');
+  margin: 0;
+}
+.container {
+  margin-top: 30px;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+.info-inner {
+  background-color: #0008;
+  color: white;
+  padding: 15px;
+  border-radius: 10px;
+}
 table {
     border-collapse: collapse;
     background: url("image.png");
@@ -5,14 +24,16 @@ table {
     background-position: center;
 }
 td {
-    width: 25px !important;
-    height: 25px !important;
+    width: 20px !important;
+    height: 20px !important;
     overflow: hidden;
-    line-height: 13px;
+    line-height: 20px;
     border: 1px solid black;
     text-align: center;
     font-weight: bold;
     cursor: pointer;
+    user-select: none;
+    -webkit-user-select: none;
 }
 button {
     margin-top: 10px;
@@ -21,8 +42,31 @@ button {
     cursor: pointer;
 }
 .revealed {
-    background-color: #fffa;
+    background-color: #cccc;
 }
 .mine {
     background-color: red;
 }
+.flag {
+  background-image: url('./flaga.png');
+  background-size: cover;
+}
+.transparent {
+  background-color: transparent !important;
+}
+
+.n1 { color: #00f; }
+
+.n2 { color: #080; }
+
+.n3 { color: #f00; }
+
+.n4 { color: #008; }
+
+.n5 { color: #800; }
+
+.n6 { color: #088; }
+
+.n7 { color: #000; }
+
+.n8 { color: #888; }
