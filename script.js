@@ -112,9 +112,31 @@ function handleRightClick(i, j) {
 function handleHoldClick(i, j) {
     if (gameOver || board[i][j].isRevealed) return;
 
-    board[i][j].isFlagged = true;
-    let cell = gameBoard.rows[i].cells[j];
-    cell.classList.add("flag");
+    let holdTime = 500; // Minimum time in milliseconds for holding down the mouse
+    let holdTimer;
+
+    const startHoldTimer = () => {
+        holdTimer = setTimeout(() => {
+            board[i][j].isFlagged = true;
+            let cell = gameBoard.rows[i].cells[j];
+            cell.classList.add("flag");
+        }, holdTime);
+    };
+
+    const stopHoldTimer = () => {
+        clearTimeout(holdTimer);
+    };
+
+    td.addEventListener("mouseup", stopHoldTimer);
+
+    td.addEventListener("mouseleave", stopHoldTimer);
+
+    td.addEventListener("mousedown", (event) => {
+        if (event.button === 2) {
+            event.preventDefault();
+            startHoldTimer();
+        }
+    });
 }
 
 // Odkrywanie pola
